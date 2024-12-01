@@ -162,7 +162,8 @@ public interface Datatype<V> {
             if (descriptorName == null) {
                 return null;
             }
-            return byName.get(descriptorName.toLowerCase(Locale.ENGLISH));
+            // Some server give not trim name, (Tencent JiguangTV), trim and to get
+            return byName.get(descriptorName.trim().replaceAll("\n", "").toLowerCase(Locale.ENGLISH));
         }
 
         public static boolean isNumeric(Builtin builtin) {
